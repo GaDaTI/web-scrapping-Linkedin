@@ -31,4 +31,14 @@ inpt_pesquisa.send_keys("Desenvolvedor Sênior")
 time.sleep(2)
 inpt_pesquisa.send_keys(Keys.RETURN)
 
+# Acessando barra de navegação
+time.sleep(5)
+lista = []
+for index in range(9):    
+    extract_nav = browser.find_element(By.XPATH, f"/html/body/div[5]/div[3]/div[2]/section/div/nav/div/ulli[{index}]").text
+    lista_nav.append(extract_nav)
+
+
+time.sleep(5)
+print(lista_nav)
 input("")
