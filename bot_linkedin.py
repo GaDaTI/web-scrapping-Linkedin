@@ -12,12 +12,12 @@ browser.get("https://www.linkedin.com/login")
 # Acessando login
 time.sleep(3)
 inpt_login = browser.find_element(By.XPATH,"//*[@id='username']")
-inpt_login.send_keys("prof.gabrielsantana@gmail.com")
+inpt_login.send_keys("XXXXXXXXXXXXX@AAAAA)
 
 # Acessando senha
 time.sleep(3)
 inpt_senha = browser.find_element(By.XPATH, "//*[@id='password']")
-inpt_senha.send_keys("G@Da!978")
+inpt_senha.send_keys("XXXXXX")
 
 # Acessando botão de login
 time.sleep(5)
