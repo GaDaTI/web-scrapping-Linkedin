@@ -12,12 +12,12 @@ browser.get("https://www.linkedin.com/login")
 # Acessando login
 time.sleep(3)
 inpt_login = browser.find_element(By.XPATH,"//*[@id='username']")
-inpt_login.send_keys("prof.gabrielsantana@gmail.com")
+inpt_login.send_keys("")
 
 # Acessando senha
 time.sleep(3)
 inpt_senha = browser.find_element(By.XPATH, "//*[@id='password']")
-inpt_senha.send_keys("G@Da!978")
+inpt_senha.send_keys("")
 
 # Acessando botão de login
 time.sleep(5)
@@ -33,12 +33,31 @@ inpt_pesquisa.send_keys(Keys.RETURN)
 
 # Acessando barra de navegação
 time.sleep(5)
+extract_nav = browser.find_element(By.XPATH, f"//*[@id='search-reusables__filters-bar']/ul").text
+
+# Identificando a opção "Pessoas" no menu 
 lista = []
-for index in range(9):    
-    extract_nav = browser.find_element(By.XPATH, f"/html/body/div[5]/div[3]/div[2]/section/div/nav/div/ulli[{index}]").text
-    lista_nav.append(extract_nav)
+contador = index = 0
+palavra = ""
+for item in extract_nav:    
+    if item == "\n":
+        contador += 1        
+        if palavra == "Pessoas":
+            index = contador 
+            lista.append(palavra)
+            palavra ='' 
+        else:
+            lista.append(palavra)
+            palavra ='' 
+    else:
+        palavra += item   
 
+# Resultado do menu
+print(lista[index])   
 
+# Acessando menu "Pessoas"
 time.sleep(5)
-print(lista_nav)
+btn_pessoas = browser.find_element(By.XPATH, f"//*[@id='search-reusables__filters-bar']/ul/li[{index}]")
+btn_pessoas.click()
+
 input("")
