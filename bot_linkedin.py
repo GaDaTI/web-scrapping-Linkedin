@@ -37,6 +37,7 @@ inpt_pesquisa.send_keys(Keys.RETURN)
 # Acessando barra de navegação
 time.sleep(5)
 extract_nav = browser.find_element(By.XPATH, f"//*[@id='search-reusables__filters-bar']/ul").text
+# print(extract_nav)
 
 # Identificando a opção "Pessoas" no menu 
 lista = []
@@ -47,6 +48,7 @@ for item in extract_nav:
         contador += 1        
         if palavra == "Pessoas":
             index = contador 
+            btn_pessoas = browser.find_element(By.XPATH, f"//*[@id='search-reusables__filters-bar']/ul/li[{index}]/button")
             lista.append(palavra)
             palavra ='' 
         else:
@@ -55,15 +57,15 @@ for item in extract_nav:
     else:
         palavra += item   
 
-# Resultado do menu
-print(lista[index])   
-
 # Acessando menu "Pessoas"
 time.sleep(5)
-btn_pessoas = browser.find_element(By.XPATH, f"//*[@id='search-reusables__filters-bar']/ul/li[{index}]")
 btn_pessoas.click()
 
-for _ in range(4):
-    btn_pessoas.send_keys(Keys.TAB)
+# Descobrindo o nome 
+time.sleep(5)
+links = browser.find_elements(By.XPATH,"//*[@id='pW2f0KMnQRmu52wvrQtWJA==']/div/ul/li[1]/div/div/div[2]")
+
+for link in links:
+    print(link.text)
 
 input("")
