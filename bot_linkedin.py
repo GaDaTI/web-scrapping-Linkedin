@@ -59,4 +59,10 @@ btn_pessoas = browser.find_element(By.XPATH, f"//*[@id='search-reusables__filter
 time.sleep(2)
 btn_pessoas.click()
 
+# Idetinficado Pessoas
+time.sleep(5)
+extract_pessoas = browser.find_element(By.XPATH, "//*[@id='HfspL7uiQtyLGWZT+SzXrw==']/div/ul").text
+time.sleep(2)
+print(extract_pessoas)
+
 input("")
